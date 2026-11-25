@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="css/paginas/galeria.css">
   <script src="js/datos/config.js" defer></script>
   <script src="js/lib/utilidades.js" defer></script>
+  <script src="js/lib/texto.js" defer></script>
   <script src="js/componentes/sitio.js" defer></script>
   <script src="js/datos/galeria.js" defer></script>
   <script src="js/componentes/lightbox.js" defer></script>
@@ -81,18 +82,37 @@
       una imagen para verla a mayor tamaño.</p>
 
     <!-- Las fotografías se añaden en js/datos/galeria.js -->
-    <div id="galeria-vacia" class="vacia">
+    <div id="galeria-vacia" class="vacia" hidden>
       <img src="img/decoracion/trisquel.svg" width="64" height="64" alt="">
       <strong>Próximamente</strong>
       <p>Estamos preparando la galería. Mientras tanto, puedes ver las <a href="seleccionados.html">fotografías
           seleccionadas</a> de cada edición.</p>
     </div>
-    <div id="galeria" class="mosaico" hidden></div>
+    <div id="galeria">
+      <div id="pestanas" role="tablist" aria-label="Edición"></div>
+      <div id="panel" role="tabpanel" tabindex="0">
+        <p class="meta" id="ordinal"></p>
+        <nav class="cat-index" id="indice-momentos" aria-label="Apartados"></nav>
+        <div id="momentos"></div>
+      </div>
+    </div>
     <noscript>
       <p class="prose">Para ver la galería necesitas tener JavaScript activado en el navegador.</p>
     </noscript>
 
-    <!-- Plantilla de cada fotografía; la usa js/paginas/galeria.js -->
+    <!-- Plantillas que usa js/paginas/galeria.js -->
+    <template id="tpl-pestana">
+      <button type="button" role="tab" aria-selected="false" aria-controls="panel" tabindex="-1"></button>
+    </template>
+    <template id="tpl-enlace-momento">
+      <a></a>
+    </template>
+    <template id="tpl-momento">
+      <section class="momento">
+        <h2>Momento</h2>
+        <div class="mosaico" data-serie></div>
+      </section>
+    </template>
     <template id="tpl-foto">
       <figure>
         <button type="button" aria-haspopup="dialog"><img src="" alt="" loading="lazy"></button>
