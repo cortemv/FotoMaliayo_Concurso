@@ -48,3 +48,30 @@ button[data-img]:focus-visible {
   outline: 2px solid var(--copper);
   outline-offset: 4px;
 }
+
+/* Botones «anterior» y «siguiente» (solo en series de fotos, como la galería) */
+.lightbox-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 0.2rem;
+}
+
+.lightbox-nav[hidden] {
+  display: none;
+}
+
+.lightbox-nav .btn {
+  min-width: 2.8rem;
+  padding: 0.2rem 0.8rem;
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+.lightbox-contador {
+  min-width: 4.5ch;
+  font-size: 0.95rem;
+  text-align: center;
+  color: var(--muted);
+}

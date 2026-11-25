@@ -8,7 +8,7 @@ La web es una carpeta de archivos estáticos (HTML, CSS, JavaScript y Markdown).
 |---|---|---|
 | `js/datos/config.js` | Año, cartel, calendario, fechas, categorías, portada y responsable | Sí |
 | `js/datos/seleccionados.js` | Las fotografías seleccionadas (ganadores, finalistas…) de todas las ediciones | Sí, se añaden las nuevas |
-| `js/datos/galeria.js` | Las fotografías de la galería (de momento vacía) | Cuando se quieran añadir fotos |
+| `js/datos/galeria.js` | Las fotografías de la galería (exposiciones, entregas de premios…), por edición | Cuando se quieran añadir fotos |
 | `data/entidades.json` | Logotipos de organizadores y colaboradores | Solo si cambian |
 | `data/historia.md` | El texto de la página de historia | Solo si cambia |
 | `data/bases.md` | El texto de las bases de la edición actual | Sí |
@@ -49,6 +49,13 @@ Usa un editor de texto, nunca Word. Sirven el Bloc de notas o TextEdit, aunque e
    - Cada línea termina en coma, menos la última de la lista.
 
 La pestaña del año nuevo, los botones de categorías y la galería aparecen solos. Cada categoría tiene su propia dirección para compartirla, por ejemplo `fotomaliayo.es/seleccionados.html#2025-paisaje-montana`.
+
+### 1 bis. Añadir fotos a la galería
+
+1. Reduce las fotos igual que las premiadas (1600 px y miniatura de 720 px terminada en `-mini.jpg`) y cópialas en `img/fotos/galeria/`, con nombres como `2027-exposicion-1.jpg`.
+2. Abre `js/datos/galeria.js`, copia una línea existente y cambia sus datos: `edicion` (año), `momento` (por ejemplo `"Exposición"` o `"Entrega de premios"`), las rutas, `pie` y `alt`.
+
+La pestaña del año y los apartados de cada momento aparecen solos. En el visor ampliado se puede pasar de foto con las flechas.
 
 ### 2. Cambiar la foto de portada (opcional)
 
@@ -158,7 +165,7 @@ Guarda siempre una copia de la carpeta anterior antes de hacer cambios. Si algo 
 
 | Momento | Archivos |
 |---|---|
-| Tras la entrega de premios | `img/fotos/<año>/` y `js/datos/seleccionados.js` |
+| Tras la entrega de premios | `img/fotos/<año>/` y `js/datos/seleccionados.js`; para la galería, `img/fotos/galeria/` y `js/datos/galeria.js` |
 | Al lanzar la nueva edición | `js/datos/config.js`, `img/`, `data/bases.md`, `og:image` si cambia el cartel, y `Code.gs` |
 | Tras editar cualquier `.md` de `data/` | Ejecutar `node herramientas/generar-documentos.mjs` |
 | Si cambian los colaboradores | `img/logos/` y `data/entidades.json` |
